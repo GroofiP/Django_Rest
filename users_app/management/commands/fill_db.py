@@ -1,13 +1,13 @@
-import json
-import os
-
-from django.conf import settings
-from django.contrib.auth.models import User
 from django.core.management import BaseCommand
+
+from users_app.models import User
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        User.objects.create_user('reqwerfsdfsf1', 'myemaifsfsfl@crazymail.local', '1234qwer1234qwer')
-        User.objects.create_user('reqwerfsdfsf2', 'myemaifsfsfl@crazymail.local', '1234qwer1234qwer')
-        User.objects.create_user('reqwerfsdfsf3', 'myemaifsfsfl@crazymail.local', '1234qwer1234qwer')
+        User.objects.create_user(username="pavel1", last_name="pavel2", first_name="pavel3",
+                                 email='pavel1@crazymail.local')
+        User.objects.create_user(username="pavel4", last_name="pavel5", first_name="pavel6",
+                                 email='pavel2@crazymail.local')
+        User.objects.create_user(username="pavel7", last_name="pavel8", first_name="pavel9",
+                                 email='pavel3@crazymail.local')
