@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import axios from 'axios'
 import UserList from './User'
+import MenuList from "./Menu";
+import FooterList from "./Footer";
 
 class App extends React.Component {
     constructor(props) {
@@ -43,7 +45,7 @@ class Menu extends React.Component {
     render() {
         return (
             <div style={this.divStyle}>
-                <a href="http://127.0.0.1:8000/api/users/">Api Root Menu</a>
+                <MenuList/>
             </div>
         )
     }
@@ -58,7 +60,7 @@ class Footer extends React.Component {
     render() {
         return (
             <div style={this.divStyle}>
-                <a href="https://www.django-rest-framework.org/">Django-Rest-Framework Footer</a>
+                <FooterList/>
             </div>
         )
     }
