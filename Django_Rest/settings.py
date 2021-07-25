@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-import rest_framework.pagination
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users_app',
     'corsheaders',
     'todo',
+
 ]
 
 MIDDLEWARE = [
@@ -63,20 +64,24 @@ AUTH_USER_MODEL = "users_app.User"
 ROOT_URLCONF = 'Django_Rest.urls'
 
 REST_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': (
+
+    'DEFAULT_RENDERER_CLASSES': [
         'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
         'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
-    ),
-    'DEFAULT_PARSER_CLASSES': (
+        # Any other renders
+    ],
+
+    'DEFAULT_PARSER_CLASSES': [
         # If you use MultiPartFormParser or FormParser, we also have a camel case version
         'djangorestframework_camel_case.parser.CamelCaseFormParser',
         'djangorestframework_camel_case.parser.CamelCaseMultiPartParser',
         'djangorestframework_camel_case.parser.CamelCaseJSONParser',
         # Any other parsers
-    ),
-    'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.PageNumberPagination",
-    'PAGE_SIZE': 2
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100
 }
+
 
 TEMPLATES = [
     {

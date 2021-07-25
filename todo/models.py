@@ -19,6 +19,8 @@ class Todo(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name="дата создание")
     updated = models.DateTimeField(auto_now=True, verbose_name="дата обновления")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.head_note
+
