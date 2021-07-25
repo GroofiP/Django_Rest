@@ -13,12 +13,12 @@ class Project(models.Model):
 
 
 class Todo(models.Model):
-    project = models.OneToOneField(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     head_note = models.CharField(max_length=64)
     text_note = models.TextField()
     created = models.DateTimeField(auto_now_add=True, verbose_name="дата создание")
     updated = models.DateTimeField(auto_now=True, verbose_name="дата обновления")
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.head_note
