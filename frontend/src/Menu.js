@@ -1,11 +1,25 @@
 import React from 'react'
+import {HashRouter, Link} from "react-router-dom";
 
 
 const MenuList = () => {
     return (
-        <div>
-            <a href="http://127.0.0.1:8000/api/users/">Api Root Menu</a>
-        </div>
+        <HashRouter>
+            <nav>
+                <ul>
+                    <li>
+                        <Link to='/'>Users</Link>
+                    </li>
+                    <li>
+                        <Link to='/project'>Projects</Link>
+                    </li>
+                    <li>
+                        <Link to='/todo'>Todo</Link>
+                    </li>
+                </ul>
+            </nav>
+        </HashRouter>
+
     )
 }
 

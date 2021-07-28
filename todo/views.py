@@ -4,7 +4,6 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from todo.filter import TodoFilter
 from todo.models import Project, Todo
 from todo.serializers import ProjectModelSerializer, TodoModelSerializer
 
@@ -34,7 +33,6 @@ class TodoModelViewSet(ModelViewSet):
     queryset = Todo.objects.all()
     serializer_class = TodoModelSerializer
     pagination_class = TodoLimitOffsetPagination
-    filterset_fields = TodoFilter
 
     def get_queryset(self):
         project = self.request.query_params.get('project', '')

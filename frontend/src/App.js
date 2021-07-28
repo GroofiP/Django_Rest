@@ -4,32 +4,65 @@ import axios from 'axios'
 import UserList from './User'
 import MenuList from "./Menu";
 import FooterList from "./Footer";
+import ProjectList from "./components/Projects";
+import TodoList from "./components/Todo";
+import {HashRouter, Route, Switch} from "react-router-dom";
+
+const NotFound404 = ({location}) => {
+    return (
+        <div>
+            <h1>Страница по адресу '{location.pathname}' не найдена</h1>
+        </div>
+    )
+}
+
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            'users': []
+            'users': [],
+            'projects': [],
+            'todos': [],
         }
     }
 
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/api/users/')
             .then(response => {
-                const users = response.data
-                this.setState(
-                    {
-                        'users': users
-                    }
-                )
+                this.setState({users: response.data.results})
+            }).catch(error => console.log(error))
+        axios.get('http://127.0.0.1:8000/api/project/')
+            .then(response => {
+                this.setState({projects: response.data.results})
+            }).catch(error => console.log(error))
+        axios.get('http://127.0.0.1:8000/api/todo/')
+            .then(response => {
+                this.setState({todos: response.data.results})
             }).catch(error => console.log(error))
     }
 
     render() {
         return (
-            <div>
-                <Menu/>
-                <UserList users={this.state.users}/>
+            // <div>
+            //     <Menu/>
+            //     <UserList users={this.state.users}/>
+            //     <ProjectList projects={this.state.projects} />
+            //     <TodoList todos={this.state.todos} />
+            //     <Footer/>
+            // </div>
+            <div className="App">
+                <div>
+                    <Menu/>
+                </div>
+                <HashRouter>
+                    <Switch>
+                        <Route exact path='/' component={() => <UserList users={this.state.users}/>}/>
+                        <Route exact path='/project' component={() => <ProjectList projects={this.state.projects}/>}/>
+                        <Route exact path='/todo' component={() => <TodoList todos={this.state.todos}/>}/>
+                        <Route component={NotFound404}/>
+                    </Switch>
+                </HashRouter>
                 <Footer/>
             </div>
         )
@@ -40,6 +73,7 @@ class App extends React.Component {
 class Menu extends React.Component {
     divStyle = {
         padding: "25px 0px",
+        textAlign: "left",
     };
 
     render() {
@@ -55,6 +89,7 @@ class Menu extends React.Component {
 class Footer extends React.Component {
     divStyle = {
         padding: "25px 0px",
+        textAlign: "left",
     };
 
     render() {
