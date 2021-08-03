@@ -44,13 +44,6 @@ class App extends React.Component {
 
     render() {
         return (
-            // <div>
-            //     <Menu/>
-            //     <UserList users={this.state.users}/>
-            //     <ProjectList projects={this.state.projects} />
-            //     <TodoList todos={this.state.todos} />
-            //     <Footer/>
-            // </div>
             <div className="App">
                 <div>
                     <Menu/>
