@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'todo',
     'rest_framework.authtoken',
+    'drf_yasg',
 
 ]
 
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+
 ]
 
 AUTH_USER_MODEL = "users_app.User"
@@ -89,9 +91,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-    ]
+    ],
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.QueryParameterVersioning',
 }
-
 
 TEMPLATES = [
     {
