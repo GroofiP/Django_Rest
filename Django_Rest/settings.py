@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'todo',
     'rest_framework.authtoken',
     'drf_yasg',
+    "graphene_django",
 
 ]
 
@@ -66,6 +67,10 @@ MIDDLEWARE = [
 AUTH_USER_MODEL = "users_app.User"
 
 ROOT_URLCONF = 'Django_Rest.urls'
+
+GRAPHENE = {
+    "SCHEMA": "users_app.schema.schema"
+}
 
 REST_FRAMEWORK = {
 
