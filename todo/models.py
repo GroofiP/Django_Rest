@@ -16,8 +16,8 @@ class Todo(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     head_note = models.CharField(max_length=64)
     text_note = models.TextField()
-    created = models.DateTimeField(auto_now_add=True, verbose_name="дата создание")
-    updated = models.DateTimeField(auto_now=True, verbose_name="дата обновления")
+    created = models.DateTimeField(blank=True,auto_now_add=True, verbose_name="дата создание")
+    updated = models.DateTimeField(blank=True,auto_now=True, verbose_name="дата обновления")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
 
